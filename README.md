@@ -8,5 +8,5 @@ visudo
 
 # Defaults requiretty
 ```
-Run install.sh to make required changes. 
+2. Run install.sh to make required changes. 
 
