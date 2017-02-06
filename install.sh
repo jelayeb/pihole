@@ -6,7 +6,7 @@ which pihole &> /dev/null
 
 echo -e " \e[32mOK:\e[0m PiHole is installed, Proceed with Setup....  "
 
-if [ -d "/var/www/html/admin2" ]
+if [ -d "/var/www/html/admin" ]
 then
     echo -e " \e[32mOK:\e[0m PiHole Admin Structure exist, proceed with installation.." 
 
