@@ -43,6 +43,12 @@
 				<option value="12" >Adware</option>
 				<option value="13" >Download</option>
 				<option value="14" >Demo</option>
+				<option value="15" >Violence</option>
+				<option value="16" >Warez</option>
+				<option value="17" >Models</option>
+				<option value="18" >Forums</option>
+				<option value="19" >Chat</option>
+				<option value="20" >Spyware</option>
 		</select>
 		</div><p class="guidelines" id="guide_2"><small>Select Category you want to add the domain name to.</small></p> 
 		</li>		<li id="li_3" >
