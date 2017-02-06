@@ -87,6 +87,13 @@ done
 			"12") category="Adware";;
 			"13") category="Download";;
 			"14") category="Demo";;
+			"15") category="Violence";;
+			"16") category="Warez";;
+			"17") category="Models";;
+			"18") category="Forums";;
+			"19") category="Chat";;
+			"20") category="Spyware";;
+
 		esac
 		
 # check if no dns was entered and exit.
