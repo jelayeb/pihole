@@ -8,7 +8,7 @@ chown -R lighttpd /var/www/html/admin/manage/data
 chown lighttpd /etc/pihole/adlists.list
 
 cp ./manage/pihole_update.sh /var/www/cgi-bin/
-chown /var/www/cgi-bin/pihole_update.sh
+chown lighttpd /var/www/cgi-bin/pihole_update.sh
 chmod +x /var/www/cgi-bin/pihole_update.sh
 
 echo "lighttpd ALL=NOPASSWD: /usr/bin/rm -f /etc/pihole/list.*127.0.0.1*.domains" >> /etc/sudoers.d/pihole
