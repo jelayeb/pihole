@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W4C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Web Interface Monitoring</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en" />
+	<meta name="robots" content="noindex, nofollow" />
+	<link rel="stylesheet" type="text/css" href="stylesheets/menu.css" media="screen, projection" />
+	<link rel="stylesheet" type="text/css" href="jquery-ui/themes/base/jquery.ui.all.css" media="screen, projection" />
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+	<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
+	<script type="text/javascript" src="jquery-ui/ui/jquery.ui.core.js"></script>
+	<script type="text/javascript" src="jquery-ui/ui/jquery.ui.widget.js"></script>
+	<script type="text/javascript" src="jquery-ui/ui/jquery.ui.menu.js"></script>
+	<script type="text/javascript" src="jquery-ui/ui/jquery.ui.position.js"></script>
+	<script type="text/javascript" src="jquery-ui/ui/jquery.ui.autocomplete.js"></script>
+	<SCRIPT LANGUAGE="javascript">
+		function send()
+		{document.theform.submit()}
+	</SCRIPT>
+</head>
+<body>
+	<div id="menu">
+		<h2>General</h2>
+		<ul>
+			<li class="menuli_style1"><a href="main.html" target="main">Home</a></li>
+			<li class="menuli_style2">
+				<div class="flag">Docs
+		<!--			<a class="flag" href="docs/de/index.html" target="main"><img src="docs/images/flags/de.png" /></a>-->
+					<a class="flag" href="docs/en/index.html" target="main"><img src="docs/images/flags/um_gb.png" /></a>
+				</div>
+			</li>
+			
+		</ul>
+		<h2>PiHole-Cat Manage</h2>
+		<ul>
+		<!-- classic search -->
+			<li class="menuli_style3">Search Domain:</li>
+			<li class="menuli_style2">
+			<div class="navbarsearch">
+			<form id="form_9277" class="appnitro"  action="manage/pihole.php" method="post" target="main">
+		<input id="element_1" name="element_1" type='text' style="width: 150px; padding: 2px; margin-left: 10px; border: 1px solid grey" onUnfocus="send()">
+		<input type="hidden" value="3" name="element_3" id="element_3">
+			
+			</form>
+			</div>
+			</li>
+			<li class="menuli_style1"><a href="manage/index.html" target="main">Add/Remove Domain</a></li>
+			<li class="menuli_style2"><a href="manage/select_category.php" target="main">Enable/Disable Category</a></li>
+		</ul>
+		<h2>Pi-Hole Admin</h2>
+		<ul>
+			<li class="menuli_style1"><a href="/admin/index.php" target="main">Pi-Hole Status</a></li>
+			<li class="menuli_style2"><a href="/admin/index.php?login" target="main">Login</a></li>
+			<li class="menuli_style1"><a href="/admin/index.php?logout" target="main">Logout</a></li>
+
+		</ul>
+		
+
+		
+		<h2>System</h2>
+		<ul>
+		<li class="menuli_style2"><a href="dash/index.html" target="main">System Performance</a></li>
+
+		</ul>
+		<h2>Info</h2>
+		<ul>
+			<li class="menuli_style1"><a href="main.html" target="main">About</a></li>
+			<li class="menuli_style1"><a href="https://github.com/pi-hole/pi-hole/wiki" target="_blank">Pi-Hole Wiki</a></li>
+			<li class="menuli_style2"></li>
+			<li class="menuli_style3"></li>
+		</ul>
+	</div>
+  <script type="text/javascript" src="js/autocomplete.js"></script>
+</body>
+</html>
