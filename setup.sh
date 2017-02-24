@@ -5,6 +5,8 @@
 
 NOW="$(date +"%d%m%Y-%H:%M")"
 
+yum install -y lighttpd-fastcgi.x86_64  > /dev/null
+
 which pihole &> /dev/null
 [ $? -ne 0 ] && echo -e " \e[31mError:\e[0m  PiHole is not Installed on the system,  install Pihole first then proceed with install.sh again.." && exit 1
 
@@ -14,33 +16,39 @@ if [ -d "/var/www/html/admin" ]
 then
     echo -e " \e[32mOK:\e[0m PiHole Admin Structure exist, proceed with installation.." 
 
-	if [ -d "/var/www/html/pihole-cat"]
+	if [ -d "/var/www/html/pihole-cat" ]
 	then
 		echo -e " \e[33mWarning:\e[0m PiHole-Cat Structure exist, proceed with Backup..."
-		tar -czvf /var/www/html/pihole-cat.${NOW}.tar.gz --remove-files /var/www/html/pihole-cat /var/www/cgi-bin/*.sh
+		tar czf /var/www/html/pihole-cat.${NOW}.tar.gz --remove-files -P /var/www/html/pihole-cat /var/www/cgi-bin/pihole.sh /var/www/cgi-bin/pihole_update.sh
 		chown root.root /var/www/html/pihole-cat.*
 		chmod -o /var/www/html/pihole-cat.*
-		cp -Rv pihole-cat /var/www/html/
+		echo "    copy new files to pihole-cat"
+		cp -R pihole-cat /var/www/html/
 		chown -R lighttpd:lighttpd /var/www/html/pihole-cat
 		chmod -R 755 /var/www/html/pihole-cat
-		cp -v pihole-cat/manage/*.sh /var/www/cgi-bin/
+		echo "    copy new cgi-bin files"
+		cp  pihole-cat/manage/*.sh /var/www/cgi-bin/
 		chmod 755 /var/www/cgi-bin/pihole*.sh
 		chown lighttpd /var/www/cgi-bin/pihole*.sh
 		
 	else
-		cp -Rv pihole-cat /var/www/html/
+		echo "    copy new files to pihole-cat"
+		cp -R pihole-cat /var/www/html/
 		chown -R lighttpd:lighttpd /var/www/html/pihole-cat
 		chmod -R 755 /var/www/html/pihole-cat
-		cp -v pihole-cat/manage/*.sh /var/www/cgi-bin/
+		echo "    copy new cgi-bin files"
+		cp  pihole-cat/manage/*.sh /var/www/cgi-bin/
 		chmod 755 /var/www/cgi-bin/pihole*.sh
 		chown lighttpd /var/www/cgi-bin/pihole*.sh
 
 	fi
 
 
-	cat ./pihole-cat/manage/categories/custom.list >> /etc/pihole/adlists.list
+	echo "    copy custom.list to adlists.list"
+	cat ./pihole-cat/manage/categories/custom.list > /etc/pihole/adlists.list
 	chown lighttpd /etc/pihole/adlists.list
 	/usr/bin/dos2unix -q /etc/pihole/adlists.list
+	echo "    remove old list.domains files"
 	/usr/bin/rm -f /etc/pihole/list.*127.0.0.1*.domains
 	chmod 755 /var/www/html/pihole-cat/manage/categories
 		
@@ -48,14 +56,21 @@ then
 
 	if [ -f ${CGI_CONF} ]
 	then
-		CGI_UPDATE=`cat <<EOCGI
-		alias.url += ( "/cgi-bin" => server_root + "/cgi-bin" )
-		$HTTP["url"] =~ "^/cgi-bin" {
-		cgi.assign = ( ".sh" => "/usr/bin/sh" )
-		}
-		EOCGI
-		`
-		echo -e ${CGI_UPDATE} >> ${CGI_CONF}
+		grep ".sh\" => \"/usr/bin/sh\"" /etc/lighttpd/conf.d/cgi.conf > /dev/null
+		if [ $? -ne 0 ]
+		then
+		
+			CGI_UPDATE=`cat <<EOCGI
+			alias.url += ( "/cgi-bin" => server_root + "/cgi-bin" )
+			$HTTP["url"] =~ "^/cgi-bin" {
+			cgi.assign = ( ".sh" => "/usr/bin/sh" )
+			}
+			EOCGI
+			`
+			echo -e ${CGI_UPDATE} >> ${CGI_CONF}
+		else
+			echo "    SH already enabled on cgi.conf"
+		fi
 	
 	else
 	
