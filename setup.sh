@@ -3,7 +3,7 @@
 # Move to pihole-cat with new interface
 # clean up old installation and create backup before proceed. 
 
-NOW="$(date +"%d%m%Y-%H:%M")"
+NOW="$(date +"%d%m%Y-%H%M")"
 
 yum install -y lighttpd-fastcgi.x86_64 dos2unix  > /dev/null
 
