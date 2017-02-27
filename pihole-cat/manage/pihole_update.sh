@@ -10,7 +10,7 @@ adlists_list="/etc/pihole/adlists.list"
 
 pihole_update(){
 		#sudo /usr/bin/cat ${custom_list} > ${adlists_list}
-		/usr/bin/cat /var/www/html/admin/manage/categories/custom.list > /etc/pihole/adlists.list 
+		/usr/bin/cat /var/www/html/pihole-cat/manage/categories/custom.list > /etc/pihole/adlists.list 
 		sudo /usr/bin/dos2unix -q ${adlists_list}
 		sudo /usr/bin/rm -f /etc/pihole/list.*127.0.0.1*.domains
 		sudo /usr/local/bin/pihole -g 2>&1 > /dev/null
