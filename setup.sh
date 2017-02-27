@@ -78,6 +78,15 @@ then
 	exit 1
 	
 	fi
+	grep "list.*127.0.0.1*.domains" /etc/sudoers.d/pihole > /dev/null
+	if [ $? -ne 0 ]
+	then
+		echo "    Configure Sudo Rights"
+		echo "lighttpd ALL=NOPASSWD: /usr/bin/rm -f /etc/pihole/list.*127.0.0.1*.domains" >> /etc/sudoers.d/pihole
+		echo "lighttpd ALL=NOPASSWD: /usr/bin/dos2unix -q /etc/pihole/adlists.list" >> /etc/sudoers.d/pihole
+	else
+		echo "    Sudo Rights are Configured"
+	fi
 	
 else
     echo -e " \e[31mError:\e[0m PiHole Admin structure is not exist, please check pihole installation and setup again..."
