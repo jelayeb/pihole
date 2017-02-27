@@ -1,7 +1,7 @@
 <?php
-	session_start();
-	session_destroy();
-	echo '<h2>You have logged out.</h2>'
-	header("Location: login.php");
-
+session_start();
+if(session_destroy()) // Destroying All Sessions
+{
+header("Location: login.php"); // Redirecting To Home Page
+}
 ?>

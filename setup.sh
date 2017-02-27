@@ -78,7 +78,7 @@ then
 	exit 1
 	
 	fi
-	grep "list.*127.0.0.1*.domains" /etc/sudoers.d/pihole > /dev/null
+	grep "list.\*127.0.0.1\*.domains" /etc/sudoers.d/pihole > /dev/null
 	if [ $? -ne 0 ]
 	then
 		echo "    Configure Sudo Rights"
@@ -87,7 +87,17 @@ then
 	else
 		echo "    Sudo Rights are Configured"
 	fi
-	
+	grep "itech" /var/www/html/pihole/index.php > /dev/null
+	if [ $? -ne 0 ]
+	then
+		echo "    Create Custom Block Page"
+		mv /var/www/html/pihole/index.php /var/www/html/pihole/index.php.org
+		cp html/index.php /var/www/html/pihole/
+		chown lighttpd /var/www/html/pihole/index.php
+	else
+		echo "    Custom Block Page Already Exist"
+	fi
+		
 else
     echo -e " \e[31mError:\e[0m PiHole Admin structure is not exist, please check pihole installation and setup again..."
     exit 1

@@ -21,7 +21,7 @@
                  </div>
 
 <ul >
- <INPUT id="saveForm" class="button_text" Type="button" VALUE="Go Back" onClick="location.href='index.html';"return true;">
+ <INPUT id="saveForm" class="button_text" Type="button" VALUE="Go Back" onClick="location.href='index.php';"return true;">
 <br><br>
 <?php
 
@@ -36,7 +36,7 @@ echo "<pre>$output</pre>";
 ?>
 
  
- <INPUT id="saveForm" class="button_text" Type="button" VALUE="Go Back" onClick="location.href='index.html';"return true;">
+ <INPUT id="saveForm" class="button_text" Type="button" VALUE="Go Back" onClick="location.href='index.php';"return true;">
  
 </ul>
         </form> 
