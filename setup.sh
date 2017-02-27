@@ -19,9 +19,9 @@ then
 	if [ -d "/var/www/html/pihole-cat" ]
 	then
 		echo -e " \e[33mWarning:\e[0m PiHole-Cat Structure exist, proceed with Backup..."
-		tar czf /var/www/html/pihole-cat.${NOW}.tar.gz --remove-files -P /var/www/html/pihole-cat /var/www/cgi-bin/pihole.sh /var/www/cgi-bin/pihole_update.sh
-		chown root.root /var/www/html/pihole-cat.*
-		chmod -o /var/www/html/pihole-cat.*
+		tar czf /var/www/html/backup_pihole-cat.${NOW}.tar.gz --remove-files -P /var/www/html/pihole-cat /var/www/cgi-bin/pihole.sh /var/www/cgi-bin/pihole_update.sh
+		chown root.root /var/www/html/backup_pihole-cat.*
+		chmod -o /var/www/html/backup_pihole-cat.*
 		echo "    copy new files to pihole-cat"
 		cp -R pihole-cat /var/www/html/
 		chown -R lighttpd:lighttpd /var/www/html/pihole-cat
