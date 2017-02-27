@@ -5,7 +5,7 @@
 
 NOW="$(date +"%d%m%Y-%H:%M")"
 
-yum install -y lighttpd-fastcgi.x86_64  > /dev/null
+yum install -y lighttpd-fastcgi.x86_64 dos2unix  > /dev/null
 
 which pihole &> /dev/null
 [ $? -ne 0 ] && echo -e " \e[31mError:\e[0m  PiHole is not Installed on the system,  install Pihole first then proceed with install.sh again.." && exit 1
