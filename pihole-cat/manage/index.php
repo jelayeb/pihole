@@ -78,6 +78,9 @@
 		</li>
 			</ul>
 		</form>	
+			<div id="footer">
+			Created by <a href="http://www.itech.ly">iTech Solutions</a>
+		</div>
 		</div>
 	<img id="bottom" src="bottom.png" alt="">
 	</body>

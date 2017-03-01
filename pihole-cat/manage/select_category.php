@@ -74,6 +74,9 @@ echo '<input type="checkbox" name="active_list[]" value="'.$notactive.'"><label>
 </li>
 </ul>
 		</form>	
+	<div id="footer">
+			Created by <a href="http://www.itech.ly">iTech Solutions</a>
+		</div>
 		</div>
 	<img id="bottom" src="bottom.png" alt="">
 	</body>
