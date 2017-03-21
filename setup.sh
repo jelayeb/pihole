@@ -19,7 +19,7 @@ then
 	if [ -d "/var/www/html/pihole-cat" ]
 	then
 		echo -e " \e[33mWarning:\e[0m PiHole-Cat Structure exist, proceed with Backup..."
-		tar czf /var/www/html/backup_pihole-cat.${NOW}.tar.gz --remove-files -P /var/www/html/pihole-cat /var/www/cgi-bin/pihole.sh /var/www/cgi-bin/pihole_update.sh
+		tar czf /var/www/html/backup_pihole-cat."${NOW}".tar.gz --remove-files -P /var/www/html/pihole-cat /var/www/cgi-bin/pihole.sh /var/www/cgi-bin/pihole_update.sh
 		chown root.root /var/www/html/backup_pihole-cat.*
 		chmod -o /var/www/html/backup_pihole-cat.*
 		echo "    copy new files to pihole-cat"
@@ -60,14 +60,14 @@ then
 		if [ $? -ne 0 ]
 		then
 		
-			CGI_UPDATE=`cat <<EOCGI
+			CGI_UPDATE=$(cat <<-EOCGI
 			alias.url += ( "/cgi-bin" => server_root + "/cgi-bin" )
 			$HTTP["url"] =~ "^/cgi-bin" {
 			cgi.assign = ( ".sh" => "/usr/bin/sh" )
 			}
 			EOCGI
-			`
-			echo -e ${CGI_UPDATE} >> ${CGI_CONF}
+			)
+			echo -e "${CGI_UPDATE}" >> ${CGI_CONF}
 		else
 			echo "    SH already enabled on cgi.conf"
 		fi
